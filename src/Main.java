@@ -8,24 +8,30 @@
  */
 
 
+import com.sun.xml.internal.ws.api.model.wsdl.WSDLOutput;
+import org.w3c.dom.ls.LSOutput;
+
 public class Main {
-    public static void main(String[] args) {
-    String[][] arr = new String[5][2];
-    checkArray(arr);
-    }
+    public static void main(String[] args) throws Exception {
+        try {
+            String[][] arr = new String[2][2];
+            checkArray(arr);
 
-    public static void checkArray(String[][] arr){
-try {
-    for (int i = 0; i < 4; i++) {
-        for (int k = 0; k < 4; k++) {
+        } catch(MyArraySizeException e) {
+            System.out.println(e.getMessage());
 
-            System.out.println(arr[i][k]);
+
         }
     }
-}catch(Exception e){
-    System.out.println("MyArraySizeException");
-};
 
+    public static void checkArray(String[][] arr) throws Exception {
+        for (int i = 0; i < 4; i++) {
+            if (arr[i].length != 4 || arr.length != 4) {
+                System.out.println(arr[i].length);
+                throw new MyArraySizeException();
+
+            }
+        }
 
     }
 }
