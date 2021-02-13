@@ -8,30 +8,41 @@
  */
 
 
-import com.sun.xml.internal.ws.api.model.wsdl.WSDLOutput;
-import org.w3c.dom.ls.LSOutput;
-
 public class Main {
+    final static int SIZE = 4;
     public static void main(String[] args) throws Exception {
+        String[][] arr = {{"2", "2", "3", "4"}, {"2","","",""}, {"1","2","1","1"}, {"2","2","1","2"}};
         try {
-            String[][] arr = new String[9][4];
-            checkArray(arr);
 
-        } catch(MyArraySizeException e) {
+            checkArray(arr);
+            System.out.println(checkArray(arr));
+
+        } catch (MyArraySizeException | MyArrayDataException e) {
             System.out.println(e.getMessage());
 
 
         }
     }
 
-    public static void checkArray(String[][] arr) throws MyArraySizeException {
-        for (int i = 0; i < 4; i++) {
-            if (arr[i].length != 4 || arr.length != 4) {
+    public static int checkArray(String[][] arr) throws MyArraySizeException, MyArrayDataException {
+        int n = 0;
+        for (int i = 0; i < SIZE; i++) {
+            if (arr[i].length != SIZE || arr.length != SIZE) {
 
                 throw new MyArraySizeException();
 
+            } else {
+                for (int j = 0; j < arr[i].length; j++) {
+                    try {
+                        n += Integer.parseInt(arr[i][j]);
+                    } catch (NumberFormatException e) {
+                        throw new MyArrayDataException(arr[i][j], i, j);
+                    }
+
+                }
+
             }
         }
-
+return n;
     }
 }
