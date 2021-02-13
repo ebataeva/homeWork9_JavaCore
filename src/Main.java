@@ -14,7 +14,7 @@ import org.w3c.dom.ls.LSOutput;
 public class Main {
     public static void main(String[] args) throws Exception {
         try {
-            String[][] arr = new String[4][4];
+            String[][] arr = new String[9][4];
             checkArray(arr);
 
         } catch(MyArraySizeException e) {
@@ -24,10 +24,10 @@ public class Main {
         }
     }
 
-    public static void checkArray(String[][] arr) throws Exception {
+    public static void checkArray(String[][] arr) throws MyArraySizeException {
         for (int i = 0; i < 4; i++) {
             if (arr[i].length != 4 || arr.length != 4) {
-   
+
                 throw new MyArraySizeException();
 
             }
