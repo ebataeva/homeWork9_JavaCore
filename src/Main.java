@@ -10,8 +10,9 @@
 
 public class Main {
     final static int SIZE = 4;
-    public static void main(String[] args) throws Exception {
-        String[][] arr = {{"2", "2", "3", "4"}, {"2","","",""}, {"1","2","1","1"}, {"2","2","1","2"}};
+
+    public static void main(String[] args)  {
+        String[][] arr = {{"2", "2", "3", "4"}, {"2", "2", "1", "1"}, {"1", "2", "1", "1"}, {"2", "2", "1", "2"}};
         try {
 
             checkArray(arr);
@@ -43,6 +44,6 @@ public class Main {
 
             }
         }
-return n;
+        return n;
     }
 }
